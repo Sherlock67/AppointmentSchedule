@@ -5,6 +5,6 @@
  This project is done with ASP.NET MVC in backend and HTML,CSS,JQUERY as frontend.
  At first you need register yourselft and verify your account by email verification.
  After that you have to login and can schedule your meeting.
- The database is given as backup file named appointment.bak
+ The database is given as backup file named appoinment.bak
  You have to restore it and run it using MySql.
  
