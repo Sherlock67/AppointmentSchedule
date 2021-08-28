@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="appoinmentModelStoreContainer" CdmEntityContainer="appoinmentEntities1">
+    <EntitySetMapping Name="tbl_appointment">
+      <EntityTypeMapping TypeName="appoinmentModel.tbl_appointment">
+        <MappingFragment StoreEntitySet="tbl_appointment">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+          <ScalarProperty Name="End_date" ColumnName="End_date" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="appoinmentModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="availabletime" ColumnName="availabletime" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="appoinmentModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

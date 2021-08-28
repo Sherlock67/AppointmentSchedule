@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="appoinmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="availabletime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_appointment">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Start_date" Type="datetime" />
+          <Property Name="End_date" Type="datetime" />
+          <Property Name="Theme" Type="varchar" MaxLength="50" />
+          <Property Name="IsFullDay" Type="bit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="ConfirmPassword" Type="varchar(max)" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityContainer Name="appoinmentModelStoreContainer">
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_appointment" EntityType="Self.tbl_appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="appoinmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_appointment">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Start_date" Type="DateTime" Precision="3" />
+          <Property Name="End_date" Type="DateTime" Precision="3" />
+          <Property Name="Theme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFullDay" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="appoinmentEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_appointment" EntityType="Self.tbl_appointment" />
+          <EntitySet Name="tbl_admin" EntityType="appoinmentModel.tbl_admin" />
+          <EntitySet Name="Users" EntityType="appoinmentModel.User" />
+        </EntityContainer>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="availabletime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="appoinmentModelStoreContainer" CdmEntityContainer="appoinmentEntities1">
+          <EntitySetMapping Name="tbl_appointment">
+            <EntityTypeMapping TypeName="appoinmentModel.tbl_appointment">
+              <MappingFragment StoreEntitySet="tbl_appointment">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="appoinmentModel.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="availabletime" ColumnName="availabletime" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="appoinmentModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

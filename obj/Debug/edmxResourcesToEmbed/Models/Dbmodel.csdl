@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="appoinmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_appointment">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Start_date" Type="DateTime" Precision="3" />
+    <Property Name="End_date" Type="DateTime" Precision="3" />
+    <Property Name="Theme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsFullDay" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="appoinmentEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_appointment" EntityType="Self.tbl_appointment" />
+    <EntitySet Name="tbl_admin" EntityType="appoinmentModel.tbl_admin" />
+    <EntitySet Name="Users" EntityType="appoinmentModel.User" />
+  </EntityContainer>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="availabletime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsEmailVerified" Type="Boolean" />
+    <Property Name="ActivationCode" Type="Guid" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,153 @@
+﻿@model AppoinmentScheduler.Models.User
+
+
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+   
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Stylish Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    @*<link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />*@
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- Style-CSS -->
+    @*<link href="~/css/font-awesome.css" rel="stylesheet" />*@
+    @*<link href="~/css/font-awesome.css" rel="stylesheet" />*@
+
+    <link href="~/css/font-awesome.css" rel="stylesheet" /> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong>@ViewBag.Message
+            </div>
+
+        }
+    }
+    else
+    { <!-- header -->
+         <!-- //header --> <!-- content -->
+        <div class="main-content-agile">
+            <div class="sub-main-w3">
+
+
+                @using (Html.BeginForm("Registration", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-style-agile">
+                        <label>Your Name</label>
+                        <div class="pom-agile">
+                            <span class="fa fa-user-o" aria-hidden="true"></span>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Name", @name = "Name", @type = "text", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="form-style-agile">
+                        <label>Email</label>
+                        <div class="pom-agile">
+                            <span class="fa fa-envelope" aria-hidden="true"></span>
+                            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @name = "Email", @type = "email", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="form-style-agile">
+                        <label>Password</label>
+                        <div class="pom-agile">
+                            <span class="fa fa-key" aria-hidden="true"></span>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @name = "Password", @type = "password", @id = "password1", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-style-agile">
+                        <label>Confirm Password</label>
+                        <div class="pom-agile">
+                            <span class="fa fa-key" aria-hidden="true"></span>
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @name = "Confirm Password", @type = "password", @id = "password2", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+
+                    <input type="submit" value="Register">
+                }
+            </div>
+
+        </div> <!-- //content --> <!-- footer -->
+        <div class="footer">
+
+        </div> if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong>@ViewBag.Message
+            </div>}
+
+        <script>
+            window.onload = function () {
+                document.getElementById("password1").onchange = validatePassword;
+                document.getElementById("password2").onchange = validatePassword;
+            }
+
+            function validatePassword() {
+                var pass2 = document.getElementById("password2").value;
+                var pass1 = document.getElementById("password1").value;
+                if (pass1 != pass2)
+                    document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+                else
+                    document.getElementById("password2").setCustomValidity('');
+                //empty string means no validation error
+            }
+        </script>
+        @*<script>
+                window.addEventListener('load', function () {
+                    document.querySelector('input[type="file"]').addEventListener('change', function () {
+                        if (this.files && this.files[0]) {
+                            var img = document.querySelector('img');
+                            img.onload = () => {
+                                URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                            }
+
+                            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                        }
+                    });
+                });
+            </script>*@
+        <!-- //password-script -->}
+</body>
+
+</html>

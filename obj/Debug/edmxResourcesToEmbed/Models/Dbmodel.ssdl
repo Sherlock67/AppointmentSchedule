@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="appoinmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="availabletime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_appointment">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Start_date" Type="datetime" />
+    <Property Name="End_date" Type="datetime" />
+    <Property Name="Theme" Type="varchar" MaxLength="50" />
+    <Property Name="IsFullDay" Type="bit" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="ConfirmPassword" Type="varchar(max)" />
+    <Property Name="IsEmailVerified" Type="bit" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityContainer Name="appoinmentModelStoreContainer">
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_appointment" EntityType="Self.tbl_appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

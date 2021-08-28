@@ -1,0 +1,82 @@
+﻿@model AppoinmentScheduler.Models.UserLogin
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="~/css/css/style.css" rel="stylesheet" type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css' />
+    <!--//webfonts-->
+</head>
+
+<body>
+
+    <div class="main">
+        @using (Html.BeginForm())
+        {
+@Html.AntiForgeryToken()
+                <form>
+                    <h1><span>User</span> <lable> Login </lable> </h1>
+                    <div class="inset">
+                        <p>
+                            <label for="email">EMAIL ADDRESS</label>
+                            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Your Email", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+
+                        </p>
+                        <p>
+                            <label for="password">PASSWORD</label>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Enter Your Password", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+
+                            @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @name = "remember", @id = "remember" } })
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                            <label for="remember">Remember me for 14 days</label>
+                        </p>
+                    </div>
+
+                    <p class="p-container">
+                        <span><a href="#">Forgot password ?</a></span>
+                        <input type="submit" value="Login">
+                    </p>
+                </form>
+        }
+    </div>
+    <!-----start-copyright---->
+    <!-----//end-copyright---->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
